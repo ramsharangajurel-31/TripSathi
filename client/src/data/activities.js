@@ -1,0 +1,321 @@
+// ==========================================================================
+// TripSathi – Activity catalog
+//
+// Used by: sample itineraries, the itinerary editor ("add activity"), the
+// What-if simulator and the admin "Manage Activities" page.
+//
+// costPerPerson is a SAMPLE ESTIMATE in NPR for one traveller (entry fee,
+// guide or ride share). Real prices differ by season, nationality and
+// operator, so these are for demonstration only.
+// ==========================================================================
+
+export const ACTIVITY_SLOTS = [
+  { id: "morning", label: "Morning" },
+  { id: "afternoon", label: "Afternoon" },
+  { id: "evening", label: "Evening" },
+];
+
+export const ACTIVITY_INTENSITIES = [
+  { id: "easy", label: "Easy" },
+  { id: "moderate", label: "Moderate" },
+  { id: "challenging", label: "Challenging" },
+];
+
+// category = one of the INTEREST ids in destinations.js
+const activities = [
+  // ----- Kathmandu -----
+  {
+    id: "k-boudha",
+    destinationId: "kathmandu",
+    name: "Boudhanath Stupa walk",
+    description: "Walk the kora around one of the largest stupas in the world and enjoy a rooftop view.",
+    category: "religious",
+    durationHours: 2,
+    costPerPerson: 400,
+    intensity: "easy",
+    bestTime: "evening",
+  },
+  {
+    id: "k-pashupatinath",
+    destinationId: "kathmandu",
+    name: "Pashupatinath Temple visit",
+    description: "Explore the riverside temple complex, an important Hindu pilgrimage site.",
+    category: "religious",
+    durationHours: 2.5,
+    costPerPerson: 500,
+    intensity: "easy",
+    bestTime: "morning",
+  },
+  {
+    id: "k-durbar",
+    destinationId: "kathmandu",
+    name: "Kathmandu Durbar Square",
+    description: "Old royal palaces, courtyards and temples in the historic heart of the city.",
+    category: "historical",
+    durationHours: 2.5,
+    costPerPerson: 500,
+    intensity: "easy",
+    bestTime: "afternoon",
+  },
+  {
+    id: "k-swayambhu",
+    destinationId: "kathmandu",
+    name: "Swayambhunath Stupa",
+    description: "Climb the steps to a hilltop stupa with wide views over the valley.",
+    category: "religious",
+    durationHours: 2,
+    costPerPerson: 200,
+    intensity: "moderate",
+    bestTime: "morning",
+  },
+  {
+    id: "k-food",
+    destinationId: "kathmandu",
+    name: "Newari food trail",
+    description: "Taste traditional Newari dishes at local eateries around the old town.",
+    category: "food",
+    durationHours: 2,
+    costPerPerson: 1200,
+    intensity: "easy",
+    bestTime: "evening",
+  },
+
+  // ----- Pokhara -----
+  {
+    id: "p-boating",
+    destinationId: "pokhara",
+    name: "Phewa Lake boating",
+    description: "Row across the lake toward the island temple with the mountains behind you.",
+    category: "nature",
+    durationHours: 2,
+    costPerPerson: 800,
+    intensity: "easy",
+    bestTime: "afternoon",
+  },
+  {
+    id: "p-sarangkot",
+    destinationId: "pokhara",
+    name: "Sarangkot sunrise",
+    description: "Early-morning viewpoint for the Annapurna range at sunrise. Includes a shared ride.",
+    category: "photography",
+    durationHours: 4,
+    costPerPerson: 700,
+    intensity: "easy",
+    bestTime: "morning",
+  },
+  {
+    id: "p-pagoda",
+    destinationId: "pokhara",
+    name: "World Peace Pagoda hike",
+    description: "Cross the lake and hike up to the white pagoda for lake and mountain views.",
+    category: "nature",
+    durationHours: 3,
+    costPerPerson: 300,
+    intensity: "moderate",
+    bestTime: "afternoon",
+  },
+  {
+    id: "p-davis",
+    destinationId: "pokhara",
+    name: "Davis Falls and Gupteshwor Cave",
+    description: "Visit a waterfall that drops into a gorge and a nearby cave temple.",
+    category: "nature",
+    durationHours: 2,
+    costPerPerson: 300,
+    intensity: "easy",
+    bestTime: "morning",
+  },
+  {
+    id: "p-paragliding",
+    destinationId: "pokhara",
+    name: "Tandem paragliding",
+    description: "Fly over the valley with a licensed pilot. Weather dependent.",
+    category: "adventure",
+    durationHours: 3,
+    costPerPerson: 9000,
+    intensity: "challenging",
+    bestTime: "morning",
+  },
+  {
+    id: "p-lakeside",
+    destinationId: "pokhara",
+    name: "Lakeside evening walk",
+    description: "A relaxed walk along the lake promenade, with dinner at a local restaurant.",
+    category: "relaxation",
+    durationHours: 2,
+    costPerPerson: 0,
+    intensity: "easy",
+    bestTime: "evening",
+  },
+
+  // ----- Chitwan -----
+  {
+    id: "c-safari",
+    destinationId: "chitwan",
+    name: "Jeep safari in Chitwan National Park",
+    description: "Half-day jeep safari with a guide, looking for rhinos, deer and birds.",
+    category: "wildlife",
+    durationHours: 4,
+    costPerPerson: 3500,
+    intensity: "easy",
+    bestTime: "morning",
+  },
+  {
+    id: "c-canoe",
+    destinationId: "chitwan",
+    name: "Rapti River canoe ride",
+    description: "Glide down the river in a dugout canoe to spot crocodiles and waterbirds.",
+    category: "wildlife",
+    durationHours: 1.5,
+    costPerPerson: 1000,
+    intensity: "easy",
+    bestTime: "afternoon",
+  },
+  {
+    id: "c-breeding",
+    destinationId: "chitwan",
+    name: "Elephant Breeding Centre visit",
+    description: "A guided visit to learn about elephant conservation in the park.",
+    category: "wildlife",
+    durationHours: 2,
+    costPerPerson: 300,
+    intensity: "easy",
+    bestTime: "afternoon",
+  },
+  {
+    id: "c-tharu",
+    destinationId: "chitwan",
+    name: "Tharu cultural show",
+    description: "Traditional Tharu music and stick dance performed in the evening.",
+    category: "culture",
+    durationHours: 1.5,
+    costPerPerson: 500,
+    intensity: "easy",
+    bestTime: "evening",
+  },
+  {
+    id: "c-village-walk",
+    destinationId: "chitwan",
+    name: "Village nature walk",
+    description: "A guided walk through Tharu villages and community forest edges.",
+    category: "nature",
+    durationHours: 2,
+    costPerPerson: 500,
+    intensity: "easy",
+    bestTime: "morning",
+  },
+
+  // ----- Nagarkot -----
+  {
+    id: "n-sunrise",
+    destinationId: "nagarkot",
+    name: "Nagarkot sunrise viewpoint",
+    description: "Watch the sun rise over the Himalayan range from the hilltop tower.",
+    category: "photography",
+    durationHours: 2,
+    costPerPerson: 200,
+    intensity: "easy",
+    bestTime: "morning",
+  },
+  {
+    id: "n-hike",
+    destinationId: "nagarkot",
+    name: "Nagarkot to Changu Narayan hike",
+    description: "A half-day downhill hike through villages to an ancient temple.",
+    category: "trekking",
+    durationHours: 4,
+    costPerPerson: 400,
+    intensity: "moderate",
+    bestTime: "morning",
+  },
+  {
+    id: "n-sunset",
+    destinationId: "nagarkot",
+    name: "Sunset and Himalayan panorama",
+    description: "Relax at a viewpoint as the light changes over the mountains.",
+    category: "relaxation",
+    durationHours: 1.5,
+    costPerPerson: 0,
+    intensity: "easy",
+    bestTime: "evening",
+  },
+
+  // ----- Bandipur -----
+  {
+    id: "b-bazaar",
+    destinationId: "bandipur",
+    name: "Bandipur Bazaar walk",
+    description: "Stroll the car-free Newari bazaar with its restored shopfronts.",
+    category: "culture",
+    durationHours: 2,
+    costPerPerson: 0,
+    intensity: "easy",
+    bestTime: "afternoon",
+  },
+  {
+    id: "b-siddha",
+    destinationId: "bandipur",
+    name: "Siddha Cave excursion",
+    description: "Hike to one of the largest caves in Nepal with a local guide.",
+    category: "adventure",
+    durationHours: 4,
+    costPerPerson: 600,
+    intensity: "moderate",
+    bestTime: "morning",
+  },
+  {
+    id: "b-tundikhel",
+    destinationId: "bandipur",
+    name: "Tundikhel sunset",
+    description: "Sunset over the Marsyangdi valley from the town's open viewing ground.",
+    category: "relaxation",
+    durationHours: 1.5,
+    costPerPerson: 0,
+    intensity: "easy",
+    bestTime: "evening",
+  },
+
+  // ----- Lumbini -----
+  {
+    id: "l-garden",
+    destinationId: "lumbini",
+    name: "Sacred Garden and Maya Devi Temple",
+    description: "Visit the birthplace of Lord Buddha, the Ashoka Pillar and the holy pond.",
+    category: "religious",
+    durationHours: 3,
+    costPerPerson: 400,
+    intensity: "easy",
+    bestTime: "morning",
+  },
+  {
+    id: "l-monastic",
+    destinationId: "lumbini",
+    name: "Monastic Zone by rickshaw",
+    description: "Tour monasteries built by Buddhist communities from many countries.",
+    category: "culture",
+    durationHours: 3,
+    costPerPerson: 600,
+    intensity: "easy",
+    bestTime: "afternoon",
+  },
+  {
+    id: "l-museum",
+    destinationId: "lumbini",
+    name: "Lumbini Museum",
+    description: "A small museum of Buddhist art and artefacts from the region.",
+    category: "historical",
+    durationHours: 1.5,
+    costPerPerson: 150,
+    intensity: "easy",
+    bestTime: "afternoon",
+  },
+];
+
+export default activities;
+
+// ---------- Helpers ----------
+export const getActivityById = (id) =>
+  activities.find((activity) => activity.id === id) || null;
+
+export const getActivitiesByDestination = (destinationId) =>
+  activities.filter((activity) => activity.destinationId === destinationId);

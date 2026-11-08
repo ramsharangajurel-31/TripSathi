@@ -1,0 +1,233 @@
+/* ==========================================================================
+   TripSathi – Responsive Styles
+   Breakpoints (desktop-first, max-width):
+
+     1280px  large laptops
+     1024px  tablets landscape / small laptops
+      768px  tablets portrait
+      640px  phones
+      480px  small phones (375px and 425px devices fall in here)
+
+   Must be imported AFTER global.css and components.css so these rules win.
+   Layout-specific responsive rules (navbar, sidebars, hero, wizard,
+   itinerary, admin) are added in the phase that creates those components.
+   ========================================================================== */
+
+/* ==========================================================================
+   ≤ 1280px – Large laptops
+   ========================================================================== */
+@media (max-width: 1280px) {
+  :root {
+    --container-max: 1120px;
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   ≤ 1024px – Tablets (landscape) / small laptops
+   ========================================================================== */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: var(--space-5);
+    --sidebar-width: 240px;
+    --font-size-5xl: 2.5rem;
+    --font-size-4xl: 2rem;
+  }
+
+  .section {
+    padding-block: var(--space-12);
+  }
+
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-header {
+    margin-bottom: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   ≤ 768px – Tablets (portrait)
+   ========================================================================== */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: var(--space-4);
+    --navbar-height: 60px;
+    --topbar-height: 60px;
+    --font-size-5xl: 2.25rem;
+    --font-size-4xl: 1.75rem;
+    --font-size-3xl: 1.5rem;
+    --font-size-2xl: 1.25rem;
+  }
+
+  .section {
+    padding-block: var(--space-10);
+  }
+
+  .section-header__subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  /* Forms: two-column rows become a single column */
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  /* Page header actions go full width under the title */
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .page-header__actions {
+    width: 100%;
+  }
+  .page-header__actions .btn {
+    flex: 1 1 auto;
+  }
+
+  .card__header,
+  .card__body,
+  .card__footer {
+    padding-inline: var(--space-5);
+  }
+
+  .card__body {
+    padding-block: var(--space-5);
+  }
+
+  /* Pagination stacks: info above controls */
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal__header,
+  .modal__body,
+  .modal__footer {
+    padding-inline: var(--space-5);
+  }
+}
+
+/* ==========================================================================
+   ≤ 640px – Phones
+   ========================================================================== */
+@media (max-width: 640px) {
+  :root {
+    --font-size-5xl: 2rem;
+    --font-size-4xl: 1.625rem;
+  }
+
+  .section {
+    padding-block: var(--space-8);
+  }
+
+  .grid {
+    gap: var(--space-4);
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Form action bars: full-width stacked buttons, primary action on top */
+  .form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  /* Modals fill the width; footer buttons stack */
+  .modal-overlay {
+    align-items: flex-end;
+    padding: var(--space-2);
+  }
+  .modal,
+  .modal--sm,
+  .modal--lg {
+    max-width: 100%;
+    max-height: calc(100vh - var(--space-4));
+    border-radius: var(--radius-xl);
+  }
+  .modal__footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .modal__footer .btn {
+    width: 100%;
+  }
+  .confirm .modal__footer {
+    flex-direction: column-reverse;
+  }
+
+  /* Pagination: hide numbered pages beyond the essentials */
+  .pagination__btn--page {
+    display: none;
+  }
+  .pagination__btn--page.is-active {
+    display: inline-flex;
+  }
+
+  .state {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  /* Toasts use the full width on phones */
+  .Toastify__toast-container {
+    width: 100%;
+    padding: var(--space-2);
+  }
+}
+
+/* ==========================================================================
+   ≤ 480px – Small phones (425px, 375px, 360px devices)
+   ========================================================================== */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: var(--space-4);
+    --font-size-5xl: 1.75rem;
+    --font-size-4xl: 1.5rem;
+    --font-size-3xl: 1.375rem;
+  }
+
+  .btn--lg {
+    padding: 0 var(--space-6);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .card__header {
+    flex-wrap: wrap;
+  }
+
+  .table th,
+  .table td {
+    padding: var(--space-3);
+  }
+}
+
+/* ==========================================================================
+   Touch devices – disable hover-only motion that feels sticky on touch
+   ========================================================================== */
+@media (hover: none) {
+  .card--hover:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+    border-color: var(--color-border);
+  }
+
+  .card--hover:hover .card__media img {
+    transform: none;
+  }
+}

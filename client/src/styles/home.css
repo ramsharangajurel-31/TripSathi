@@ -1,0 +1,622 @@
+/* ==========================================================================
+   TripSathi – Home Page Styles
+   Hero, trip search box, destination cards, featured cards, "how it works"
+   steps, feature grid and the closing call-to-action band.
+   Each block has its own responsive rules at the end of the block.
+   ========================================================================== */
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-navy);
+  color: var(--color-text-inverse);
+}
+
+/* Background photo (SafeImage). If it is missing, the navy base shows. */
+.hero__media {
+  position: absolute;
+  inset: 0;
+}
+.hero__media .safe-image {
+  background-color: var(--color-navy);
+}
+.hero__media .safe-image__fallback {
+  display: none;
+}
+
+/* Dark overlay keeps text readable over any photo */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 37, 56, 0.92) 0%,
+    rgba(11, 37, 56, 0.78) 55%,
+    rgba(11, 37, 56, 0.55) 100%
+  );
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-12);
+  padding-block: var(--space-20);
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  color: var(--color-primary-light);
+  border: 1px solid rgba(204, 251, 241, 0.35);
+  border-radius: var(--radius-full);
+}
+
+.hero__title {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-5xl);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+.hero__title span {
+  color: var(--color-accent);
+}
+
+.hero__text {
+  max-width: 540px;
+  margin-bottom: var(--space-8);
+  font-size: var(--font-size-lg);
+  color: #d5e2ec;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+.hero__stat-value {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+}
+.hero__stat-label {
+  font-size: var(--font-size-sm);
+  color: #b6c7d4;
+}
+
+/* ==========================================================================
+   TRIP SEARCH (natural-language box inside the hero)
+   ========================================================================== */
+.trip-search {
+  padding: var(--space-6);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.trip-search__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-xl);
+}
+.trip-search__title svg {
+  color: var(--color-primary);
+}
+
+.trip-search__subtitle {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.trip-search__examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block: var(--space-3) var(--space-4);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-active);
+  background-color: var(--color-primary-soft);
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+.chip:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+.chip:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.trip-search__note {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* ==========================================================================
+   SECTION HELPERS
+   ========================================================================== */
+.section-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-10);
+}
+
+.section-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.section-toolbar .section-header {
+  margin: 0;
+  text-align: left;
+}
+
+.estimate-note {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-xs);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   DESTINATION CARD (popular destinations)
+   ========================================================================== */
+.destination-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+}
+.destination-card:hover {
+  color: inherit;
+}
+
+.destination-card__rating {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+  background-color: var(--color-white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+.destination-card__rating svg {
+  color: var(--color-accent);
+}
+
+.destination-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+}
+
+.destination-card__name {
+  font-size: var(--font-size-xl);
+}
+
+.destination-card__province {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.destination-card__tagline {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.destination-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.destination-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+.destination-card__price {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+.destination-card__price small {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+.destination-card__days {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   FEATURED CARD (image with text overlay)
+   ========================================================================== */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.featured-card {
+  position: relative;
+  display: block;
+  min-height: 300px;
+  overflow: hidden;
+  color: var(--color-white);
+  background-color: var(--color-navy);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+.featured-card:hover {
+  color: var(--color-white);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.featured-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* First card is wider on desktop for a magazine-style layout */
+.featured-card--wide {
+  grid-column: span 2;
+}
+
+.featured-card__media {
+  position: absolute;
+  inset: 0;
+}
+.featured-card__media .safe-image__img {
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
+}
+.featured-card:hover .featured-card__media .safe-image__img {
+  transform: scale(1.05);
+}
+
+/* Bottom fade guarantees readable text on any photo */
+.featured-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 37, 56, 0) 35%,
+    rgba(11, 37, 56, 0.88) 100%
+  );
+}
+
+.featured-card__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5);
+}
+
+.featured-card__name {
+  font-size: var(--font-size-2xl);
+  color: var(--color-white);
+}
+
+.featured-card__text {
+  font-size: var(--font-size-sm);
+  color: #dbe6ee;
+}
+
+.featured-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: #dbe6ee;
+}
+.featured-card__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ==========================================================================
+   HOW IT WORKS (steps)
+   ========================================================================== */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  padding: var(--space-6);
+  text-align: left;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.step__icon {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary-light);
+}
+
+.step__title {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-lg);
+}
+
+.step__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   FEATURE GRID (Why TripSathi)
+   ========================================================================== */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+.feature-card:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+  border-radius: var(--radius-md);
+}
+
+.feature-card__title {
+  font-size: var(--font-size-lg);
+}
+
+.feature-card__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   CALL TO ACTION BAND
+   ========================================================================== */
+.cta-band {
+  padding: var(--space-12) var(--space-8);
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-xl);
+}
+
+.cta-band__title {
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-3xl);
+  color: var(--color-white);
+}
+
+.cta-band__text {
+  max-width: 560px;
+  margin: 0 auto var(--space-6);
+  font-size: var(--font-size-lg);
+  color: #d7f5f1;
+}
+
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+    padding-block: var(--space-12);
+  }
+
+  .hero__text {
+    max-width: 640px;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .featured-card--wide {
+    grid-column: 1 / -1;
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__inner {
+    padding-block: var(--space-10);
+  }
+
+  .hero__text {
+    font-size: var(--font-size-base);
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .hero__stats {
+    gap: var(--space-5);
+  }
+
+  .trip-search {
+    padding: var(--space-5);
+  }
+
+  .featured-grid,
+  .steps,
+  .feature-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .featured-card {
+    min-height: 260px;
+  }
+
+  .section-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-band {
+    padding: var(--space-10) var(--space-5);
+  }
+  .cta-band__title {
+    font-size: var(--font-size-2xl);
+  }
+  .cta-band__text {
+    font-size: var(--font-size-base);
+  }
+  .cta-band__actions .btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* ==========================================================================
+   DESTINATION GRID (popular destinations list)
+   4 columns on desktop, 2 on tablets, 1 on phones. Uses a list for
+   semantics, so list styles are reset.
+   ========================================================================== */
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.destination-grid > li {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .destination-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

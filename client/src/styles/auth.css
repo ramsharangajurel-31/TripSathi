@@ -1,0 +1,231 @@
+/* ==========================================================================
+   TripSathi – Authentication pages (Login, Register)
+   Two-panel layout: brand panel (desktop only) + form card.
+   ========================================================================== */
+
+.auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+/* ---------- Brand panel ---------- */
+.auth__aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-16) var(--space-12);
+  color: var(--color-white);
+  background-color: var(--color-navy);
+}
+
+.auth__aside-title {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-white);
+}
+.auth__aside-title span {
+  color: var(--color-accent);
+}
+
+.auth__aside-text {
+  max-width: 420px;
+  font-size: var(--font-size-base);
+  color: #c4d3de;
+}
+
+.auth__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.auth__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: #d5e2ec;
+}
+.auth__points svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--color-accent);
+}
+
+/* ---------- Form panel ---------- */
+.auth__panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--container-padding);
+}
+
+.auth__card {
+  width: 100%;
+  max-width: 460px;
+}
+
+.auth__header {
+  margin-bottom: var(--space-6);
+}
+.auth__title {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-3xl);
+}
+.auth__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.auth__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.auth__footer {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+.auth__footer a {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Form-level message (e.g. "Incorrect email or password") */
+.auth__alert {
+  margin-bottom: var(--space-5);
+}
+
+/* ---------- Password strength meter ---------- */
+.strength {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.strength__bars {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1);
+}
+
+.strength__bar {
+  height: 4px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-base);
+}
+
+.strength__label {
+  min-width: 64px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-align: right;
+}
+
+.strength--weak .strength__bar.is-filled {
+  background-color: var(--color-danger);
+}
+.strength--weak .strength__label {
+  color: var(--color-danger);
+}
+.strength--fair .strength__bar.is-filled {
+  background-color: var(--color-accent);
+}
+.strength--fair .strength__label {
+  color: var(--color-warning);
+}
+.strength--good .strength__bar.is-filled,
+.strength--strong .strength__bar.is-filled {
+  background-color: var(--color-primary);
+}
+.strength--good .strength__label,
+.strength--strong .strength__label {
+  color: var(--color-primary);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .auth {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The brand panel is decorative context; hide it on tablets and phones so
+     the form is the first thing visible. */
+  .auth__aside {
+    display: none;
+  }
+
+  .auth__panel {
+    padding-block: var(--space-10);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth__panel {
+    align-items: flex-start;
+    padding-block: var(--space-8);
+  }
+  .auth__title {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* ---------- Demo accounts note (Login page, demonstration build) ---------- */
+.demo-accounts {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background-color: var(--color-surface-muted);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+}
+
+.demo-accounts__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.demo-accounts__note {
+  margin-block: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.demo-accounts__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.demo-accounts__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.demo-accounts__details {
+  min-width: 0;
+}
+
+.demo-accounts__credentials {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  overflow-wrap: anywhere;
+}

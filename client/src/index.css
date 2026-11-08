@@ -1,0 +1,12 @@
+/* ==========================================================================
+   TripSathi – Stylesheet entry point
+   Order matters: tokens → base → components → layout → pages → responsive.
+   ========================================================================== */
+@import "./styles/variables.css";
+@import "./styles/global.css";
+@import "./styles/components.css";
+@import "./styles/layout.css";
+@import "./styles/home.css";
+@import "./styles/auth.css";
+@import "./styles/dashboard.css";
+@import "./styles/responsive.css";
