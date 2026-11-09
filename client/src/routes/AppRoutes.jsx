@@ -6,6 +6,9 @@ import ProtectedRoute, { GuestRoute } from "../components/common/ProtectedRoute"
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Dashboard from "../pages/Dashboard";
+import Notifications from "../pages/Notifications";
+import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 
 /**
@@ -34,8 +37,11 @@ export default function AppRoutes() {
       {/* Traveler dashboard: signed-in travelers only */}
       <Route element={<ProtectedRoute />}>
         <Route path="dashboard" element={<DashboardLayout />}>
-          {/* The dashboard pages are added in the next steps. Until then,
-              every dashboard URL shows the not-found message inside the shell. */}
+          <Route index element={<Dashboard />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="profile" element={<Profile />} />
+          {/* Profile and notifications arrive next; trip pages in Phases 4-5.
+              Until then these URLs show the not-found message inside the shell. */}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
