@@ -1,0 +1,586 @@
+/* ==========================================================================
+   TripSathi – Itinerary results
+   Trip overview, budget breakdown (chart + table), and the building blocks
+   shared by the rest of the results page (daily timeline, route, weather,
+   alternatives, editing) which later steps append below.
+   ========================================================================== */
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ==========================================================================
+   TRIP OVERVIEW
+   ========================================================================== */
+.trip-summary__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.trip-summary__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--space-5) var(--space-6);
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.fact__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+  border-radius: var(--radius-md);
+}
+.fact__label {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.fact__value {
+  display: block;
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+  overflow-wrap: anywhere;
+}
+.fact__value--large {
+  font-size: var(--font-size-lg);
+}
+.fact__sub {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+
+.trip-summary__preferences {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.trip-summary__preferences-title {
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.trip-summary__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ==========================================================================
+   BUDGET BREAKDOWN
+   Chart on one side, a plain two-column table on the other. The table holds
+   the same numbers as the chart, so the chart is decoration for assistive
+   technology.
+   ========================================================================== */
+.budget-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.chart-box {
+  position: relative;
+  height: 260px;
+}
+
+/* Total in the middle of the donut */
+.chart-box__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+.chart-box__center-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.chart-box__center-value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+
+.cost-table {
+  width: 100%;
+  font-size: var(--font-size-sm);
+}
+.cost-table th,
+.cost-table td {
+  padding: var(--space-3) 0;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+}
+.cost-table th {
+  font-weight: var(--font-weight-regular);
+  text-align: left;
+}
+.cost-table td {
+  font-weight: var(--font-weight-medium);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cost-table__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.cost-table__swatch {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-sm);
+}
+.swatch--1 {
+  background-color: var(--chart-1);
+}
+.swatch--2 {
+  background-color: var(--chart-2);
+}
+.swatch--3 {
+  background-color: var(--chart-3);
+}
+.swatch--4 {
+  background-color: var(--chart-4);
+}
+.swatch--5 {
+  background-color: var(--chart-5);
+}
+
+.cost-table__total th,
+.cost-table__total td {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  border-bottom-width: 2px;
+  border-bottom-color: var(--color-border-strong);
+}
+
+.cost-table__status--ok td {
+  color: var(--color-success);
+}
+.cost-table__status--over td {
+  color: var(--color-danger);
+}
+.cost-table__status th,
+.cost-table__status td {
+  font-weight: var(--font-weight-bold);
+  border-bottom: none;
+}
+
+/* How much of the budget the estimate uses */
+.meter {
+  margin-top: var(--space-5);
+}
+.meter__header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.meter__track {
+  height: 8px;
+  overflow: hidden;
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+}
+.meter__fill {
+  display: block;
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+.meter__fill--warn {
+  background-color: var(--color-accent);
+}
+.meter__fill--over {
+  background-color: var(--color-danger);
+}
+
+.cost-notes {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.cost-notes li + li {
+  margin-top: var(--space-1);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .budget-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+  .chart-box {
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================================================
+   DAILY ITINERARY (timeline, day card, time slots, activity card)
+   ========================================================================== */
+.results-title {
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-xl);
+}
+.results-note {
+  margin-bottom: var(--space-5);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline__item {
+  position: relative;
+  padding-left: 56px;
+  padding-bottom: var(--space-5);
+}
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Vertical line joining the day markers */
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  left: 19px;
+  width: 2px;
+  background-color: var(--color-border-strong);
+}
+.timeline__item:last-child::before {
+  display: none;
+}
+
+.timeline__marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 4px solid var(--color-bg);
+  border-radius: var(--radius-full);
+}
+
+.day {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.day__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.day__title {
+  font-size: var(--font-size-lg);
+}
+
+.day__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.day__place {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.day__total {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+.day__total-value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+.day__total-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Time slots ---------- */
+.slot {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+}
+.slot + .slot {
+  border-top: 1px dashed var(--color-border);
+}
+
+.slot__title {
+  padding-top: var(--space-1);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.slot__body {
+  min-width: 0;
+}
+
+.slot__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot__empty {
+  padding-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Activity card ---------- */
+.activity {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.activity__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity__name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+}
+
+.activity__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+.activity__duration {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.activity__notes {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.activity__notes svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.activity__cost {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  text-align: right;
+}
+.activity__price {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+.activity__unit {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.activity__actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-1);
+}
+
+/* ---------- Transport / accommodation / food ---------- */
+.day__logistics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4) var(--space-6);
+  margin: 0;
+  padding: var(--space-5) var(--space-6);
+  background-color: var(--color-surface-muted);
+  border-top: 1px solid var(--color-border);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.logistic {
+  min-width: 0;
+}
+.logistic__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.logistic__title svg {
+  color: var(--color-primary);
+}
+.logistic__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+.logistic__cost {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+}
+
+.day__notes {
+  margin: 0;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .slot {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+  }
+  .slot__title {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  /* The day number is already in each day's title, so the marker and line go */
+  .timeline__item {
+    padding-left: 0;
+  }
+  .timeline__item::before,
+  .timeline__marker {
+    display: none;
+  }
+
+  .day__header,
+  .slot,
+  .day__logistics,
+  .day__notes {
+    padding-inline: var(--space-4);
+  }
+
+  .day__total {
+    text-align: left;
+  }
+
+  .activity {
+    flex-wrap: wrap;
+  }
+  .activity__main {
+    flex-basis: 100%;
+  }
+  .activity__cost {
+    text-align: left;
+  }
+  .activity__actions {
+    margin-left: auto;
+  }
+}
+
+/* ---------- Print: keep each day on one page where possible ---------- */
+@media print {
+  .day {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}

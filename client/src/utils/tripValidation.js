@@ -24,7 +24,7 @@ import { validateDateRange, validateNumberRange } from "./validation";
 
 export const SPECIAL_REQUIREMENTS_MAX = 300;
 export const DESCRIPTION_MAX = 500;
-
+export const NOTES_MAX = 500;
 const isOneOf = (options, id) => options.some((option) => option.id === id);
 
 // ---------- Step 1: destination and dates ----------
@@ -122,12 +122,17 @@ export function validatePreferencesStep(values) {
   if (!isOneOf(PACE_OPTIONS, preferences.pace)) {
     errors.pace = "Choose a travel pace.";
   }
-  if ((preferences.special || "").length > SPECIAL_REQUIREMENTS_MAX) {
+    if ((preferences.special || "").length > SPECIAL_REQUIREMENTS_MAX) {
     errors.special = `Keep this under ${SPECIAL_REQUIREMENTS_MAX} characters.`;
+  }
+  if ((values.notes || "").length > NOTES_MAX) {
+    errors.notes = `Keep this under ${NOTES_MAX} characters.`;
   }
 
   return errors;
 }
+
+
 
 // ---------- Step 5: description and review ----------
 export function validateReviewStep(values) {

@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
+import CreateTrip from "../pages/CreateTrip";
 import Notifications from "../pages/Notifications";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
@@ -38,6 +39,7 @@ export default function AppRoutes() {
       <Route element={<ProtectedRoute />}>
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="create-trip" element={<CreateTrip />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="profile" element={<Profile />} />
           {/* Profile and notifications arrive next; trip pages in Phases 4-5.

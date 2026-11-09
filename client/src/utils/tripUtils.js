@@ -122,3 +122,28 @@ export function getTripDestinationNames(trip) {
 
 export const getActivityCount = (trip) =>
   (trip?.days || []).reduce((sum, day) => sum + getDayActivities(day).length, 0);
+
+/**
+ * Cost of ONE day for the whole group, in whole rupees:
+ * { transport, accommodation, food, activities, total }
+ *
+ * The 5% miscellaneous buffer is not spread over days, so the day totals
+ * add up to the trip subtotal (within a few rupees of rounding), not to the
+ * final total.
+ */
+export function getDayCosts(trip, day) {
+  const units = getPayingUnits(trip);
+
+  const transport = Math.round((day?.transport?.costPerPerson || 0) * units);
+  const accommodation = Math.round((day?.accommodation?.costPerPerson || 0) * units);
+  const food = Math.round((day?.food?.costPerPerson || 0) * units);
+  const activities = Math.round(getDayActivityCost(day) * units);
+
+  return {
+    transport,
+    accommodation,
+    food,
+    activities,
+    total: transport + accommodation + food + activities,
+  };
+}

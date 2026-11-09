@@ -600,3 +600,21 @@ button.progress__step:focus-visible {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
 }
+
+/* ==========================================================================
+   WIZARD NOTICES (draft restored, creation error)
+   ========================================================================== */
+.wizard__notice {
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+.wizard__notice .btn {
+  margin-left: auto;
+}
+
+/* Inside the form panel the notice sits above the footer */
+.wizard__panel .wizard__notice {
+  margin-top: var(--space-6);
+  margin-bottom: 0;
+}

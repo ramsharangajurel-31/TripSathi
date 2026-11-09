@@ -17,6 +17,7 @@ export const STORAGE_KEYS = {
   session: "tripsathi.session",
   trips: "tripsathi.trips",
   notifications: "tripsathi.notifications",
+  tripDraft: "tripsathi.tripDraft", // one draft per user: "tripsathi.tripDraft.<userId>"
 };
 
 export const ROLES = {
