@@ -155,8 +155,8 @@ function toItem(activity, tripKey, dayNumber, slot, index) {
  * Throws an Error with a readable message when the input cannot form a trip
  * (the wizard validates first, so this is a safety net).
  */
-export function generateTrip(input) {
-  const preferences = { ...DEFAULT_PREFERENCES, ...(input.preferences || {}) };
+export function generateTrip(input, { fitBudget = true } = {}) {
+const preferences = { ...DEFAULT_PREFERENCES, ...(input.preferences || {}) };
   const interests = input.interests || [];
   const notes = [];
 
@@ -333,7 +333,9 @@ export function generateTrip(input) {
   let costs = getTripCosts(trip);
   const removed = [];
 
-  while (costs.isOverBudget) {
+    // fitBudget is false for what-if simulations, which must never remove
+  // activities by themselves. (Their generationNotes are not shown.)
+  while (fitBudget && costs.isOverBudget) {
     let target = null;
 
     trip.days.forEach((day) => {

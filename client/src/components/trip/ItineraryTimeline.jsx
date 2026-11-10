@@ -22,8 +22,14 @@ function Logistic({ icon, title, children, cost }) {
     </div>
   );
 }
-
-function DayCard({ trip, day, units, renderActivityActions, renderSlotFooter }) {
+function DayCard({
+  trip,
+  day,
+  units,
+  renderActivityActions,
+  renderSlotFooter,
+  renderDayFooter,
+}) {
   const date = addDays(trip.departureDate, day.dayNumber - 1);
   const destination = getDestinationById(day.destinationId);
   const costs = getDayCosts(trip, day);
@@ -120,8 +126,10 @@ function DayCard({ trip, day, units, renderActivityActions, renderSlotFooter }) 
           {day.food?.label || "Local restaurants"}
         </Logistic>
       </dl>
-
       {day.notes && <p className="day__notes">{day.notes}</p>}
+
+      {renderDayFooter && renderDayFooter(day)}
+
     </article>
   );
 }
@@ -142,6 +150,7 @@ export default function ItineraryTimeline({
   trip,
   renderActivityActions,
   renderSlotFooter,
+  renderDayFooter,
 }) {
   const days = Array.isArray(trip.days) ? trip.days : [];
   const units = getPayingUnits(trip);
@@ -174,6 +183,7 @@ export default function ItineraryTimeline({
                 units={units}
                 renderActivityActions={renderActivityActions}
                 renderSlotFooter={renderSlotFooter}
+                renderDayFooter={renderDayFooter}
               />
             </li>
           ))}

@@ -965,3 +965,32 @@ a.stat-card:hover {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ==========================================================================
+   SAVED TRIPS
+   ========================================================================== */
+.saved-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.saved-trip__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: 0 var(--space-6) var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .saved-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .saved-trip__actions {
+    justify-content: flex-start;
+    padding-inline: var(--space-5);
+  }
+}

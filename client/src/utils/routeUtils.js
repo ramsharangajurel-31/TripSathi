@@ -26,8 +26,7 @@ import {
 
 export const HUB_ID = "kathmandu";
 
-const MODE_LABELS = {
-  "tourist-bus": "Tourist bus",
+export const MODE_LABELS = {  "tourist-bus": "Tourist bus",
   "private-car": "Private car",
   flight: "Domestic flight",
 };

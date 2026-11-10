@@ -17,8 +17,7 @@ import PreferencesStep from "./PreferencesStep";
 import ReviewStep from "./ReviewStep";
 import TripProgress from "./TripProgress";
 import useTripForm from "../../hooks/useTripForm";
-import { DASHBOARD_PATHS } from "../../data/dashboardData";
-
+import { tripPath } from "../../data/dashboardData";
 // Order matches STEP_VALIDATORS in utils/tripValidation.js and the step
 // indexes used by the review screen's "Edit" buttons.
 const STEPS = [
@@ -29,9 +28,7 @@ const STEPS = [
   { id: "review", label: "Review", Component: ReviewStep },
 ];
 
-// Where to go after a trip is created. Phase 5 adds the itinerary page, and
-// this becomes tripPath(trip.id) so the user lands on the new itinerary.
-const AFTER_CREATE_PATH = DASHBOARD_PATHS.home;
+
 
 /**
  * The five-step trip planning wizard.
@@ -98,7 +95,7 @@ export default function TripForm({ initialParams }) {
 
     if (result.ok) {
       toast.success("Your itinerary has been created.");
-      navigate(AFTER_CREATE_PATH);
+       navigate(tripPath(result.trip.id));
     } else if (result.reason === "invalid") {
       toast.error("Please fix the highlighted fields.");
     }

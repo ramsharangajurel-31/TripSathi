@@ -584,3 +584,581 @@
     box-shadow: none;
   }
 }
+
+/* ==========================================================================
+   ROUTE OVERVIEW
+   ========================================================================== */
+.route {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.route__item {
+  position: relative;
+  display: flex;
+  gap: var(--space-4);
+  padding-bottom: var(--space-5);
+}
+.route__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Line from one stop to the next */
+.route__item::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 0;
+  left: 9px;
+  width: 2px;
+  background-color: var(--color-border-strong);
+}
+.route__item:last-child::before {
+  display: none;
+}
+
+.route__dot {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-primary);
+  border-radius: var(--radius-full);
+}
+.route__item--end .route__dot {
+  background-color: var(--color-primary);
+}
+
+.route__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.route__stop {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+}
+.route__stop-kind {
+  display: inline-block;
+  min-width: 64px;
+  margin-right: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.route__leg {
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.route__leg-title {
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.route__leg-empty {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.route__leg-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.route__leg-details li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.route__leg-details svg {
+  color: var(--color-primary);
+}
+
+.route__totals {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   WEATHER
+   ========================================================================== */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.weather-grid > li {
+  min-width: 0;
+}
+
+/* Dashed border = sample information, not a live forecast */
+.weather-card {
+  height: 100%;
+  padding: var(--space-5);
+  background-color: var(--color-surface-muted);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.weather-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.weather-card__name {
+  font-size: var(--font-size-lg);
+}
+.weather-card__dates {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.weather-card__temp {
+  margin: var(--space-4) 0 var(--space-3);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+.weather-card__temp-note {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+
+.weather-card__summary {
+  font-size: var(--font-size-sm);
+}
+.weather-card__advice {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.weather-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+/* ==========================================================================
+   ALTERNATIVE SUGGESTIONS
+   ========================================================================== */
+.alt-group + .alt-group {
+  margin-top: var(--space-8);
+}
+.alt-group__title {
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-base);
+}
+.alt-group__text {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.alt-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alt-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.alt-item__kicker {
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.alt-item__title {
+  font-size: var(--font-size-base);
+}
+.alt-item__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.alt-item__reason {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-active);
+}
+.alt-item .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.alt-places {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.alt-places__name {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+.review-tags {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alt-group ~ .cost-notes,
+.card__body > .cost-notes {
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .route__stop-kind {
+    display: block;
+    min-width: 0;
+    margin: 0;
+  }
+  .route__leg-details {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   EDITING CONTROLS
+   ========================================================================== */
+/* Clips the footer areas to the card's rounded corners */
+.day {
+  overflow: hidden;
+}
+.day__logistics {
+  border-radius: 0;
+}
+
+.slot__add {
+  margin-top: var(--space-3);
+}
+
+.day__edit-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-top: 1px dashed var(--color-border);
+}
+
+@media (max-width: 640px) {
+  .day__edit-bar {
+    padding-inline: var(--space-4);
+  }
+}
+
+/* ==========================================================================
+   PRINT LAYOUT (Print / Save as PDF)
+   Builds on the base print rules in global.css (hides navbar, footer,
+   dashboard sidebar and top bar, flattens cards). Everything below is
+   specific to the itinerary page.
+   ========================================================================== */
+.print-header {
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-primary);
+}
+.print-header__brand {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+.print-header__brand span {
+  margin-left: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+.print-header__title {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+.print-header__meta,
+.print-header__note {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.print-header__note {
+  font-size: var(--font-size-xs);
+}
+
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
+@media print {
+  /* Layout: plain, full-width page instead of the dashboard shell */
+  .dashboard {
+    display: block;
+    background: #ffffff;
+  }
+  .dashboard__main {
+    display: block;
+  }
+  .dashboard__content {
+    max-width: none;
+    padding: 0;
+  }
+  .dashboard-sidebar,
+  .dashboard-topbar,
+  .dashboard__overlay,
+  .skip-link {
+    display: none !important;
+  }
+
+  .results {
+    gap: var(--space-4);
+  }
+
+  /* Editing controls never print */
+  .activity__actions,
+  .slot__add,
+  .day__edit-bar {
+    display: none !important;
+  }
+
+  /* Keep the meaning of colour: browsers drop backgrounds by default */
+  .badge,
+  .meter__fill,
+  .cost-table__swatch,
+  .timeline__marker,
+  .route__dot,
+  .fact__icon,
+  .weather-card,
+  .activity,
+  .day__logistics,
+  .alert {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Do not split small blocks across pages */
+  .activity,
+  .route__item,
+  .weather-card,
+  .alt-item,
+  .fact,
+  .cost-table tr {
+    break-inside: avoid;
+  }
+
+  /* Time slots keep their label beside the activities on paper */
+  .slot {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+  .slot__title {
+    padding-top: var(--space-1);
+  }
+
+  .chart-box {
+    height: 220px;
+  }
+
+  /* Section titles stay with the content that follows */
+  .card__header,
+  .results-title {
+    break-after: avoid;
+  }
+}
+
+/* ==========================================================================
+   WHAT-IF SIMULATOR
+   ========================================================================== */
+.whatif__summary {
+  margin: var(--space-5) 0 0;
+}
+.whatif__summary .delta {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-xs);
+}
+
+.whatif__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+}
+
+.whatif__controls,
+.whatif__results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.whatif__group-title {
+  display: block;
+  margin-bottom: var(--space-3);
+  padding: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* Cost change colours. The "+" / "−" sign always carries the meaning. */
+.delta {
+  color: var(--color-text-secondary);
+}
+.delta--good {
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+}
+.delta--bad {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-semibold);
+}
+
+.compare-table {
+  min-width: 480px;
+}
+.compare-table th[scope="col"]:not(:first-child),
+.compare-table td {
+  text-align: right;
+  white-space: nowrap;
+}
+.compare-table th[scope="row"] {
+  font-weight: var(--font-weight-regular);
+  text-align: left;
+}
+.compare-table__strong th,
+.compare-table__strong td {
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-surface-muted);
+}
+
+/* Activity checklist */
+.activity-check {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.activity-check__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.activity-check__row:hover {
+  background-color: var(--color-surface-muted);
+}
+.activity-check__row input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+.activity-check__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.activity-check__name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  overflow-wrap: anywhere;
+}
+.activity-check__meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.activity-check__row.is-skipped .activity-check__name {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+/* Simulated day-by-day outline */
+.whatif__outline {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+}
+.whatif__outline summary {
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+.whatif__outline summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.whatif__outline ol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.whatif__outline li {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.whatif__outline li span {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .whatif__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+}
