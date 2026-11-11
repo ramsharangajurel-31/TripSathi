@@ -15,6 +15,7 @@ export const DASHBOARD_PATHS = {
   home: USER_HOME, // "/dashboard"
   createTrip: `${USER_HOME}/create-trip`,
   savedTrips: `${USER_HOME}/saved-trips`,
+  compare: `${USER_HOME}/compare`,
   profile: `${USER_HOME}/profile`,
   notifications: `${USER_HOME}/notifications`,
 };
@@ -29,6 +30,7 @@ export const DASHBOARD_NAV = [
   { label: "Overview", to: DASHBOARD_PATHS.home, icon: "overview", end: true },
   { label: "Create trip", to: DASHBOARD_PATHS.createTrip, icon: "create" },
   { label: "Saved trips", to: DASHBOARD_PATHS.savedTrips, icon: "saved" },
+  { label: "Compare trips", to: DASHBOARD_PATHS.compare, icon: "compare" },
   {
     label: "Notifications",
     to: DASHBOARD_PATHS.notifications,

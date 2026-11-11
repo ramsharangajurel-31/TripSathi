@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FiBookmark, FiCheck, FiEdit2, FiInfo, FiSliders, FiTrash2 } from "react-icons/fi";
+import {
+  FiBookmark,
+  FiCheck,
+  FiColumns,
+  FiEdit2,
+  FiInfo,
+  FiSliders,
+  FiTrash2,
+} from "react-icons/fi";
 
 import PageHeader from "../components/common/PageHeader";
 import ErrorState from "../components/common/ErrorState";
@@ -113,7 +121,14 @@ export default function TripDetails() {
             >
               {editing ? "Done editing" : "Edit itinerary"}
             </Button>
-                        <ExportItinerary trip={trip} />
+                                    <Button
+              to={`${DASHBOARD_PATHS.compare}?a=${trip.id}`}
+              variant="secondary"
+              leftIcon={<FiColumns />}
+            >
+              Compare
+            </Button>
+            <ExportItinerary trip={trip} />
             <Button
               variant={trip.saved ? "secondary" : "primary"}
               leftIcon={<FiBookmark />}

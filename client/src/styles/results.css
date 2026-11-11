@@ -1162,3 +1162,87 @@
     gap: var(--space-6);
   }
 }
+
+/* ==========================================================================
+   COMPARISON TABLES
+   ========================================================================== */
+
+/* Row labels read as normal text, not as small-capital column headers.
+   (This also tidies the simulator's table from the previous step.) */
+.compare-table th[scope="row"] {
+  font-size: var(--font-size-sm);
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: normal;
+  color: var(--color-text);
+  background-color: transparent;
+}
+.compare-table .compare-table__strong th[scope="row"] {
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-surface-muted);
+}
+
+/* Trip comparison: text values, left-aligned and allowed to wrap */
+.compare-table--trips {
+  min-width: 620px;
+}
+.compare-table--trips th[scope="col"]:not(:first-child),
+.compare-table--trips td {
+  text-align: left;
+  white-space: normal;
+}
+.compare-table--trips th[scope="col"] {
+  font-size: var(--font-size-sm);
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: normal;
+}
+.compare-table--trips th[scope="col"] a {
+  font-weight: var(--font-weight-semibold);
+}
+
+.compare-table__group th {
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg);
+}
+
+.compare-cell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.insights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-6);
+  padding-left: var(--space-5);
+  list-style: disc;
+  font-size: var(--font-size-sm);
+}
+
+/* ==========================================================================
+   COMPARE PAGE TOOLBAR
+   ========================================================================== */
+.compare-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .compare-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .compare-toolbar .btn {
+    justify-self: center;
+  }
+}

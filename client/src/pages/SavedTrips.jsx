@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { toast } from "react-toastify";
-import { FiBookmark, FiPlus, FiSearch, FiTrash2 } from "react-icons/fi";
+import { FiBookmark, FiColumns, FiPlus, FiSearch, FiTrash2 } from "react-icons/fi";
 
 import PageHeader from "../components/common/PageHeader";
 import EmptyState from "../components/common/EmptyState";
@@ -42,7 +42,7 @@ const SORTERS = {
 export default function SavedTrips() {
   usePageTitle("Saved trips");
 
-  const { savedTrips, toggleSaved, deleteTrip } = useTrips();
+    const { trips, savedTrips, toggleSaved, deleteTrip } = useTrips();
 
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("newest");
@@ -100,10 +100,21 @@ export default function SavedTrips() {
           { label: "Dashboard", to: DASHBOARD_PATHS.home },
           { label: "Saved trips" },
         ]}
-        actions={
-          <Button to={DASHBOARD_PATHS.createTrip} leftIcon={<FiPlus />}>
-            Create a trip
-          </Button>
+                actions={
+          <>
+            {trips.length >= 2 && (
+              <Button
+                to={DASHBOARD_PATHS.compare}
+                variant="secondary"
+                leftIcon={<FiColumns />}
+              >
+                Compare trips
+              </Button>
+            )}
+            <Button to={DASHBOARD_PATHS.createTrip} leftIcon={<FiPlus />}>
+              Create a trip
+            </Button>
+          </>
         }
       />
 
