@@ -34,13 +34,16 @@ import {
  */
 export default function EditableItinerary({ trip, editing, onChange }) {
   const [activityEditor, setActivityEditor] = useState(null); // { mode, dayId, slot, item?, key }
-  const [noteDayId, setNoteDayId] = useState(null);
+   const [noteDayId, setNoteDayId] = useState(null);
+  const [editorSerial, setEditorSerial] = useState(0); // gives each opened dialog a fresh key
   const [pendingRemove, setPendingRemove] = useState(null); // activity item
 
   if (!editing) return <ItineraryTimeline trip={trip} />;
 
-  const openEditor = (config) =>
-    setActivityEditor({ ...config, key: `${config.mode}-${Date.now()}` });
+    const openEditor = (config) => {
+    setEditorSerial(editorSerial + 1);
+    setActivityEditor({ ...config, key: `${config.mode}-${editorSerial + 1}` });
+  };
 
   const handleSaveActivity = (data, location) => {
     if (activityEditor.mode === "add") {

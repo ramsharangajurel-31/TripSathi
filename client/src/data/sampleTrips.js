@@ -156,7 +156,7 @@ const SAMPLE_TRIPS = [
     budgetTotal: 45000,
     interests: ["nature", "adventure", "photography"],
     preferences: {
-      accommodation: "guesthouse",
+      accommodation: "hotel",
       transport: "tourist-bus",
       intensity: "moderate",
       pace: "balanced",
@@ -225,7 +225,7 @@ const SAMPLE_TRIPS = [
       makeDay({
         tripKey, dayNumber: 1, destinationId: "chitwan", tier,
         title: "Arrive in Chitwan",
-        intercity: { label: "Tourist bus Kathmandu → Chitwan (about 5 hours)", costPerPerson: 1000 },
+        intercity: { label: "Tourist bus Kathmandu → Pokhara (about 7 hours)", costPerPerson: 1200 },
         afternoon: ["c-breeding"],
         evening: ["c-tharu"],
       }),

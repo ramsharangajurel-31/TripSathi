@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
+import Loading from "../components/common/Loading";
 import ScrollManager from "../components/common/ScrollManager";
 
 /**
@@ -53,7 +54,9 @@ export default function MainLayout() {
         className="page-content"
         tabIndex={-1}
       >
-        <Outlet />
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <Footer />

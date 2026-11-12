@@ -4,7 +4,7 @@ import Modal from "../common/Modal";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
-import activities, {
+import {
   ACTIVITY_SLOTS,
   getActivitiesByDestination,
   getActivityById,
@@ -268,6 +268,3 @@ export default function ActivityEditorModal({ mode, trip, initial, onSave, onClo
   );
 }
 
-// `activities` is imported so a typo in the catalog import fails the build
-// here, where the dialog depends on it.
-void activities;

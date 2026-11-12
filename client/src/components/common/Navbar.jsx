@@ -4,7 +4,8 @@ import { FiLogOut, FiMenu, FiX } from "react-icons/fi";
 import useLogout from "../../hooks/useLogout";
 
 import Logo from "./Logo";
-import UserMenu, { getAccountLinks } from "./UserMenu";
+import UserMenu from "./UserMenu";
+import { getAccountLinks } from "../../utils/accountLinks";
 import Button from "../ui/Button";
 import classNames from "../../utils/classNames";
 import getInitials from "../../utils/getInitials";

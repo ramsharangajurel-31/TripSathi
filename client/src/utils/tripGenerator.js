@@ -43,8 +43,6 @@ const MAX_HOURS_PER_DAY = 9;
 const REMOTE_DESTINATIONS = ["mustang", "ghandruk", "everest-region"];
 const HIGH_ALTITUDE_METRES = 2500;
 
-const TIER_LABELS = { budget: "Budget", standard: "Standard", premium: "Premium" };
-
 // ---------- Small helpers used by the wizard ----------
 
 /** Each chosen destination needs at least one day. */

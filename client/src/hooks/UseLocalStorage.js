@@ -62,9 +62,7 @@ export default function useLocalStorage(key, initialValue) {
   const initialRef = useRef(initialValue);
   const sourceRef = useRef(Symbol("useLocalStorage"));
 
-  const [value, setValueState] = useState(() =>
-    readStorage(key, initialRef.current)
-  );
+  const [value, setValueState] = useState(() => readStorage(key, initialValue));
 
   // Latest value, so functional updates never use a stale copy.
   const valueRef = useRef(value);

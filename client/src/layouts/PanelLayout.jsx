@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
+import Loading from "../components/common/Loading";
 import ScrollManager from "../components/common/ScrollManager";
 import classNames from "../utils/classNames";
 
@@ -122,7 +123,9 @@ export default function PanelLayout({ Sidebar, Topbar, variant = "dashboard" }) 
           className="dashboard__content"
           tabIndex={-1}
         >
-          <Outlet />
+          <Suspense fallback={<Loading />}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
     </div>

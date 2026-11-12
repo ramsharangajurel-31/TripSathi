@@ -118,13 +118,19 @@ export default function AuthProvider({ children }) {
 
   // The current user is derived from the users list, so profile edits and
   // admin changes (for example deactivating an account) apply immediately.
+    // While a logout is in progress and the home page is already showing, the
+  // visitor counts as signed out straight away. The stored session is
+  // cleaned up a moment later by the effect below.
+  const effectiveSessionUserId =
+    pendingLogout && location.pathname === "/" ? null : sessionUserId;
+
   const user = useMemo(() => {
-    if (!sessionUserId) return null;
-    const found = users.find((item) => item.id === sessionUserId);
+    if (!effectiveSessionUserId) return null;
+    const found = users.find((item) => item.id === effectiveSessionUserId);
     return found && found.status === USER_STATUS.active
       ? toPublicUser(found)
       : null;
-  }, [users, sessionUserId]);
+  }, [users, effectiveSessionUserId]);
 
   // ---------- Actions ----------
 
@@ -196,12 +202,16 @@ export default function AuthProvider({ children }) {
     navigate("/");
   }, [navigate]);
 
-  useEffect(() => {
-    if (pendingLogout && location.pathname === "/") {
+    useEffect(() => {
+    if (!pendingLogout || location.pathname !== "/") return undefined;
+
+    const timer = window.setTimeout(() => {
       clearSession();
       setSessionUserId(null);
       setPendingLogout(false);
-    }
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, [pendingLogout, location.pathname]);
   const updateProfile = useCallback(
     async ({ fullName, email, phone, location }) => {

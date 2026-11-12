@@ -9,8 +9,8 @@
 // Keys are in the same order as the fields on screen, so the first error is
 // the first field the user should fix.
 // ==========================================================================
-
-import { PROVINCES } from "../data/adminData";
+import { ACTIVITY_INTENSITIES, ACTIVITY_SLOTS } from "../data/activities";
+import { ATTRACTION_TYPES, PROVINCES } from "../data/adminData";
 import { BUDGET_TIERS, INTERESTS } from "../data/destinations";
 import { validateNumberRange } from "./validation";
 
@@ -89,6 +89,120 @@ export function validateDestination(values, others = []) {
       set(key, validateNumberRange(values[key], { label: "Cost", min: 0, max: 1000000, integer: true }));
     });
   });
+
+  return errors;
+}
+
+// ---------- Attractions ----------
+export const ATTRACTION_FEE_MAX = 100000;
+
+/**
+ * @param values  the attraction form values (see utils/attractionForm.js)
+ * @param options.destinationIds  ids of existing destinations
+ * @param options.others          every OTHER attraction, to reject a duplicate
+ *                                name within the same destination
+ */
+export function validateAttraction(values, { destinationIds = [], others = [] } = {}) {
+  const errors = {};
+  const name = values.name.trim();
+
+  const nameError = validateText(name, { label: "Attraction name", min: 2, max: 80 });
+  if (nameError) errors.name = nameError;
+
+  if (!destinationIds.includes(values.destinationId)) {
+    errors.destinationId = "Choose a destination.";
+  } else if (
+    !errors.name &&
+    others.some(
+      (item) =>
+        item.destinationId === values.destinationId &&
+        item.name.trim().toLowerCase() === name.toLowerCase()
+    )
+  ) {
+    errors.name = "This destination already has an attraction with this name.";
+  }
+
+  if (!ATTRACTION_TYPES.includes(values.type)) errors.type = "Choose a type.";
+
+  if ((values.description || "").trim().length > 400) {
+    errors.description = "Keep this under 400 characters.";
+  }
+
+  // Blank is allowed: it means "unknown".
+  if (values.entryFee !== "") {
+    const feeError = validateNumberRange(values.entryFee, {
+      label: "Entry fee",
+      min: 0,
+      max: ATTRACTION_FEE_MAX,
+      integer: true,
+    });
+    if (feeError) errors.entryFee = feeError;
+  }
+
+  return errors;
+}
+
+// ---------- Activities (catalog) ----------
+export const ACTIVITY_COST_MAX = 1000000;
+
+/**
+ * @param values  the activity form values (see utils/activityForm.js)
+ * @param options.destinationIds  ids of existing destinations
+ * @param options.others          every OTHER activity, to reject a duplicate
+ *                                name within the same destination
+ *
+ * Errors come out in the same order as the fields on screen.
+ */
+export function validateCatalogActivity(values, { destinationIds = [], others = [] } = {}) {
+  const errors = {};
+  const name = values.name.trim();
+
+  const nameError = validateText(name, { label: "Activity name", min: 2, max: 80 });
+  if (nameError) errors.name = nameError;
+
+  if (!destinationIds.includes(values.destinationId)) {
+    errors.destinationId = "Choose a destination.";
+  } else if (
+    !errors.name &&
+    others.some(
+      (item) =>
+        item.destinationId === values.destinationId &&
+        item.name.trim().toLowerCase() === name.toLowerCase()
+    )
+  ) {
+    errors.name = "This destination already has an activity with this name.";
+  }
+
+  if (!INTERESTS.some((interest) => interest.id === values.category)) {
+    errors.category = "Choose a type.";
+  }
+
+  const durationError = validateNumberRange(values.durationHours, {
+    label: "Duration",
+    min: 0.5,
+    max: 24,
+  });
+  if (durationError) errors.durationHours = durationError;
+
+  // Blank is NOT allowed: enter 0 for a free activity.
+  const costError = validateNumberRange(values.costPerPerson, {
+    label: "Cost",
+    min: 0,
+    max: ACTIVITY_COST_MAX,
+    integer: true,
+  });
+  if (costError) errors.costPerPerson = costError;
+
+  if (!ACTIVITY_INTENSITIES.some((item) => item.id === values.intensity)) {
+    errors.intensity = "Choose a difficulty.";
+  }
+  if (!ACTIVITY_SLOTS.some((slot) => slot.id === values.bestTime)) {
+    errors.bestTime = "Choose a time of day.";
+  }
+
+  if ((values.description || "").trim().length > 300) {
+    errors.description = "Keep this under 300 characters.";
+  }
 
   return errors;
 }

@@ -1,18 +1,18 @@
 import { useMemo, useState } from "react";
 import { toast } from "react-toastify";
-import { FiActivity, FiFlag, FiInfo, FiMap, FiMapPin, FiRotateCcw, FiUsers } from "react-icons/fi";
+import { FiActivity, FiFlag, FiMap, FiMapPin, FiRotateCcw, FiUsers } from "react-icons/fi";
 
 import PageHeader from "../../components/common/PageHeader";
 import ConfirmDialog from "../../components/common/ConfirmDialog";
 import Button from "../../components/ui/Button";
 import AdminChart from "../../components/admin/AdminChart";
+import AdminNotice from "../../components/admin/AdminNotice";
 import AdminStats from "../../components/admin/AdminStats";
 import RecentActivity from "../../components/admin/RecentActivity";
 import RecentUsers from "../../components/admin/RecentUsers";
 import useAdminData from "../../hooks/useAdminData";
 import useAdminUsers from "../../hooks/useAdminUsers";
 import usePageTitle from "../../hooks/usePageTitle";
-import { ADMIN_DATA_NOTICE } from "../../data/adminData";
 import { ADMIN_PATHS } from "../../data/adminNavigation";
 import { ROLES } from "../../data/demoUsers";
 import {
@@ -109,10 +109,7 @@ export default function AdminDashboard() {
         }
       />
 
-      <div className="alert alert--info admin-notice" role="note">
-        <FiInfo className="alert__icon" size={18} aria-hidden="true" />
-        <span>{ADMIN_DATA_NOTICE}</span>
-      </div>
+            <AdminNotice />
 
       <AdminStats stats={stats} />
 
