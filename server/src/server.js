@@ -1,3 +1,5 @@
+import http from "node:http";
+
 import { createApp } from "./app.js";
 import {
   connectDatabase,
@@ -6,6 +8,7 @@ import {
 } from "./config/db.js";
 import { env } from "./config/env.js";
 import { scrubMongoCredentials } from "./config/mongoUri.js";
+import { ensureIndexes } from "./models/index.js";
 import { logger } from "./utils/logger.js";
 
 let server = null;
@@ -67,9 +70,25 @@ try {
   process.exit(1);
 }
 
-server = createApp().listen(env.port, () => {
-  logger.info({ port: env.port, environment: env.nodeEnv }, "TripSathi API listening");
-});
+// Development convenience: create missing indexes at start-up. Production
+// runs `npm run db:indexes` as a deliberate step instead.
+if (!env.isProduction) {
+  try {
+    await ensureIndexes();
+    logger.info("Database indexes are in place");
+  } catch (error) {
+    logger.fatal(
+      { reason: scrubMongoCredentials(error.message) },
+      "Could not create the database indexes."
+    );
+    process.exit(1);
+  }
+}
+
+// http.createServer + listen, not app.listen: in Express 5, app.listen also
+// calls its callback with a start-up error, which would log "listening"
+// before a failed start. Here the callback runs only when the port is open.
+server = http.createServer(createApp());
 
 server.on("error", (error) => {
   if (error.code === "EADDRINUSE") {
@@ -78,4 +97,8 @@ server.on("error", (error) => {
     logger.fatal({ err: error }, "The server could not start.");
   }
   process.exit(1);
+});
+
+server.listen(env.port, () => {
+  logger.info({ port: env.port, environment: env.nodeEnv }, "TripSathi API listening");
 });

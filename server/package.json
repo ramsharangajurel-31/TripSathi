@@ -7,7 +7,9 @@
     "test": "node --test",
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
-    "db:check": "node scripts/checkDatabase.js"
+    "db:check": "node scripts/checkDatabase.js",
+    "db:indexes": "node scripts/syncIndexes.js",
+    "db:verify": "node scripts/verifyConstraints.js"
   },
   "keywords": [],
   "author": "",

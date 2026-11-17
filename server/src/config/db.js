@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import { logger } from "../utils/logger.js";
 import { env } from "./env.js";
 import { inspectMongoUri, scrubMongoCredentials } from "./mongoUri.js";
+import dns from "node:dns";
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 // A query on a field that does not exist in the schema stays in the filter
 // (and matches nothing) instead of being silently dropped. With "true", a
@@ -32,8 +35,9 @@ function attachListeners() {
  * Connects once. The driver then reconnects by itself if the link drops.
  * Throws if the first connection fails (the caller decides what to do).
  *
- * autoIndex is off in production: indexes are created deliberately by a
- * script (added with the models), not by every server start.
+  * Indexes are not created automatically by the connection: every model
+ * switches autoIndex off, and indexes are created by ensureIndexes() (see
+ * models/index.js) or by `npm run db:indexes`.
  */
 export async function connectDatabase() {
   if (mongoose.connection.readyState === 1) return mongoose.connection;
@@ -46,7 +50,7 @@ export async function connectDatabase() {
   await mongoose.connect(env.mongoUri, {
     serverSelectionTimeoutMS: CONNECT_TIMEOUT_MS,
     maxPoolSize: 10,
-    autoIndex: !env.isProduction,
+    
   });
 
   logger.info({ host: target.host, database: target.database }, "MongoDB connected");

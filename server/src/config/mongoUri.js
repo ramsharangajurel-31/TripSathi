@@ -3,6 +3,11 @@
 
 const PATTERN = /^mongodb(?:\+srv)?:\/\/([^/?]+)(?:\/([^?]*))?(?:\?.*)?$/;
 
+// Example text that is easy to leave in by mistake: our own placeholders,
+// Atlas's "<db_password>" and "<username>", and "USER:PASSWORD@CLUSTER".
+const PLACEHOLDER =
+  /your[-_ ]?(?:cluster|password|username|user)|<[^>]*>|^user:password@|@cluster\.mongodb\.net/i;
+
 /**
  * Returns { ok: true, host, database, hasCredentials } for a usable string,
  * or { ok: false, reason } with a message that is safe to show (it never
@@ -19,7 +24,16 @@ export function inspectMongoUri(uri) {
     };
   }
 
-  const [, authority, database = ""] = match;
+    const [, authority, database = ""] = match;
+
+  if (PLACEHOLDER.test(authority)) {
+    return {
+      ok: false,
+      reason:
+        'It still contains example text (such as YOUR-CLUSTER, YOUR_PASSWORD or "<db_password>"). Copy the real connection string from Atlas (Connect → Drivers) and replace the password and the database name.',
+    };
+  }
+
   const parts = authority.split("@");
 
   if (parts.length > 2) {

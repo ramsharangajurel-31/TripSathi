@@ -50,10 +50,31 @@ describe("MongoDB connection string checks", () => {
 
   it("hides credentials in any text", () => {
     const cleaned = scrubMongoCredentials(
-      "failed for mongodb+srv://user:secret@cluster0.abc12.mongodb.net/tripsathi, retrying"
+      "failed for mongodb+srv://tripsathi_dev:f2mzPCMNrRzqKaEp@cluster0.abc12.mongodb.net/tripsathi, retrying"
     );
     assert.equal(cleaned.includes("secret"), false);
     assert.equal(cleaned.includes("user:"), false);
     assert.match(cleaned, /cluster0\.abc12\.mongodb\.net/);
+  });
+});
+
+describe("placeholder connection strings", () => {
+  it("rejects the example placeholders", () => {
+    const examples = [
+      "mongodb+srv://tripsathi_dev:f2mzPCMNrRzqKaEp@YOUR-CLUSTER.mongodb.net/tripsathi?retryWrites=true",
+      "mongodb+srv://tripsathi_dev:<f2mzPCMNrRzqKaEp>@cluster0.abc12.mongodb.net/tripsathi",
+      "mongodb+srv://tripsathi_dev:f2mzPCMNrRzqKaEp@CLUSTER.mongodb.net/tripsathi",
+    ];
+
+    for (const uri of examples) {
+      const result = inspectMongoUri(uri);
+      assert.equal(result.ok, false, uri);
+      assert.match(result.reason, /example text/);
+    }
+  });
+
+  it("still accepts a real-looking Atlas host that starts with cluster0", () => {
+    const result = inspectMongoUri("mongodb+srv://tripsathi_dev:f2mzPCMNrRzqKaEp@cluster0.abc12.mongodb.net/tripsathi");
+    assert.equal(result.ok, true);
   });
 });
