@@ -12,7 +12,8 @@
     "db:verify": "node scripts/verifyConstraints.js",
     "seed:export": "node scripts/exportClientData.js",
     "seed:catalog": "node scripts/seedCatalog.js",
-    "smoke:catalog": "node scripts/smokeCatalog.js"
+    "smoke:catalog": "node scripts/smokeCatalog.js",
+    "admin:create": "node scripts/createAdmin.js"
   },
   "keywords": [],
   "author": "",

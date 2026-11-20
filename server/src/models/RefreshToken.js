@@ -17,6 +17,8 @@ const refreshTokenSchema = new Schema(
     familyId: { type: String, required: true, maxlength: 64 },
     expiresAt: { type: Date, required: true },
     revokedAt: { type: Date },
+    // Why it was revoked. Only "rotated" tokens get the short grace window.
+    revokedReason: { type: String, enum: ["rotated", "logout", "password", "reuse"] },
     userAgent: { type: String, maxlength: 200, default: "" },
   },
   schemaOptions()

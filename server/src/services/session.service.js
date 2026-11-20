@@ -10,24 +10,29 @@ import { generateRefreshToken, hashToken, signAccessToken } from "../utils/token
  * What to do with a refresh token that was looked up:
  *   "ok"               use it
  *   "expired"          too old
- *   "rotated-recently" already used, but only just: two tabs refreshing at
- *                      the same moment. Refuse, do NOT treat as theft
- *   "reused"           already used a while ago: possible theft
+ *   "rotated-recently" already exchanged, but only just: two tabs refreshing
+ *                      at the same moment. Refuse, do NOT treat as theft
+ *   "reused"           exchanged a while ago and now replayed: possible theft
+ *   "revoked"          ended on purpose (logout, password change, ...): refuse
  * Pure function, so it is tested without a database.
  */
 export function evaluateRefreshRecord(record, now = Date.now(), graceMs = env.auth.refreshGraceMs) {
   if (record.revokedAt) {
+    if (record.revokedReason !== "rotated") return "revoked";
     return now - record.revokedAt.getTime() < graceMs ? "rotated-recently" : "reused";
   }
   if (record.expiresAt.getTime() <= now) return "expired";
   return "ok";
 }
 
-export const revokeFamily = (familyId) =>
-  RefreshToken.updateMany({ familyId, revokedAt: null }, { $set: { revokedAt: new Date() } });
+const revoke = (filter, reason) =>
+  RefreshToken.updateMany(
+    { ...filter, revokedAt: null },
+    { $set: { revokedAt: new Date(), revokedReason: reason } }
+  );
 
-export const revokeAllForUser = (userId) =>
-  RefreshToken.updateMany({ user: userId, revokedAt: null }, { $set: { revokedAt: new Date() } });
+export const revokeFamily = (familyId, reason = "reuse") => revoke({ familyId }, reason);
+export const revokeAllForUser = (userId, reason = "logout") => revoke({ user: userId }, reason);
 
 /** Creates the tokens for a new login (or the next token of an existing family). */
 export async function startSession(user, userAgent = "", familyId = crypto.randomUUID()) {
@@ -54,8 +59,11 @@ export async function rotateSession(rawToken, userAgent = "") {
 
   const verdict = evaluateRefreshRecord(record);
 
+  if (verdict === "revoked") {
+    throw unauthorized("Please sign in again.", "SESSION_INVALID");
+  }
   if (verdict === "reused") {
-    await revokeFamily(record.familyId);
+    await revokeFamily(record.familyId, "reuse");
     logger.warn({ userId: String(record.user) }, "Refresh token reuse detected; session revoked");
     throw unauthorized("Your session ended. Please sign in again.", "SESSION_INVALID");
   }
@@ -69,17 +77,17 @@ export async function rotateSession(rawToken, userAgent = "") {
   // Claim the token. If another request claimed it first, this finds nothing.
   const claimed = await RefreshToken.findOneAndUpdate(
     { _id: record._id, revokedAt: null },
-    { $set: { revokedAt: new Date() } }
+    { $set: { revokedAt: new Date(), revokedReason: "rotated" } }
   );
   if (!claimed) throw unauthorized("Your session was just refreshed. Please retry.", "SESSION_ROTATED");
 
   const user = await User.findById(record.user);
   if (!user) {
-    await revokeFamily(record.familyId);
+    await revokeFamily(record.familyId, "logout");
     throw unauthorized("Please sign in again.", "SESSION_INVALID");
   }
   if (user.status !== "active") {
-    await revokeFamily(record.familyId);
+    await revokeFamily(record.familyId, "logout");
     throw forbidden("This account is inactive. Please contact the administrator.", "ACCOUNT_INACTIVE");
   }
 
@@ -92,6 +100,6 @@ export async function endSession(rawToken) {
 
   await RefreshToken.updateOne(
     { tokenHash: hashToken(rawToken), revokedAt: null },
-    { $set: { revokedAt: new Date() } }
+    { $set: { revokedAt: new Date(), revokedReason: "logout" } }
   );
 }

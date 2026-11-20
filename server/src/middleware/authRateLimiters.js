@@ -23,6 +23,15 @@ export function createAuthLimiters(overrides = {}) {
       message: "Too many failed sign-in attempts. Please wait 15 minutes and try again.",
       ...overrides.login,
     }),
+        // Wrong "current password" answers (profile email change, password
+    // change). Only failures count.
+    credentials: createRateLimiter({
+      windowMs: 15 * MINUTE,
+      limit: 15,
+      skipSuccessfulRequests: true,
+      message: "Too many failed attempts. Please wait 15 minutes and try again.",
+      ...overrides.credentials,
+    }),
     refresh: createRateLimiter({
       windowMs: 15 * MINUTE,
       limit: 120,

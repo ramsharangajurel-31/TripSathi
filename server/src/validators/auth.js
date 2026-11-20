@@ -60,3 +60,9 @@ export const loginBody = z.strictObject({
   email: emailField,
   password: loginPasswordField,
 });
+
+// For administrators, who can see everyone's data: at least 12 characters.
+export const adminPasswordField = newPasswordField.refine(
+  (value) => value.length >= 12,
+  "Administrator passwords must be at least 12 characters."
+);
