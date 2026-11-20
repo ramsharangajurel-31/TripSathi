@@ -1,0 +1,282 @@
+[
+  {
+    "destination": "kathmandu",
+    "name": "Pashupatinath Temple",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "kathmandu",
+    "name": "Boudhanath Stupa",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "kathmandu",
+    "name": "Swayambhunath",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "kathmandu",
+    "name": "Kathmandu Durbar Square",
+    "type": "Historical site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "pokhara",
+    "name": "Phewa Lake",
+    "type": "Nature",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "pokhara",
+    "name": "World Peace Pagoda",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "pokhara",
+    "name": "Sarangkot sunrise",
+    "type": "Viewpoint",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "pokhara",
+    "name": "Paragliding",
+    "type": "Adventure",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "chitwan",
+    "name": "Chitwan National Park jeep safari",
+    "type": "Wildlife",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "chitwan",
+    "name": "Rapti River canoe ride",
+    "type": "Wildlife",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "chitwan",
+    "name": "Elephant Breeding Centre",
+    "type": "Wildlife",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "chitwan",
+    "name": "Tharu cultural show",
+    "type": "Cultural",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "lumbini",
+    "name": "Maya Devi Temple",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "lumbini",
+    "name": "Ashoka Pillar",
+    "type": "Historical site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "lumbini",
+    "name": "Monastic Zone",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "lumbini",
+    "name": "Lumbini Museum",
+    "type": "Museum",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "bandipur",
+    "name": "Bandipur Bazaar",
+    "type": "Cultural",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "bandipur",
+    "name": "Siddha Cave",
+    "type": "Nature",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "bandipur",
+    "name": "Thani Mai Temple",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "bandipur",
+    "name": "Tundikhel viewpoint",
+    "type": "Viewpoint",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "mustang",
+    "name": "Jomsom",
+    "type": "Cultural",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "mustang",
+    "name": "Muktinath Temple",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "mustang",
+    "name": "Kagbeni village",
+    "type": "Cultural",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "mustang",
+    "name": "Kali Gandaki gorge",
+    "type": "Nature",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "nagarkot",
+    "name": "Sunrise viewpoint",
+    "type": "Viewpoint",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "nagarkot",
+    "name": "Nagarkot–Changu Narayan hike",
+    "type": "Trail / trek",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "nagarkot",
+    "name": "Himalayan panorama",
+    "type": "Viewpoint",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "nagarkot",
+    "name": "Hill-top resorts",
+    "type": "Other",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ilam",
+    "name": "Ilam tea gardens",
+    "type": "Nature",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ilam",
+    "name": "Antu Danda sunrise",
+    "type": "Viewpoint",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ilam",
+    "name": "Kanyam tea estate",
+    "type": "Nature",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ilam",
+    "name": "Mai Pokhari",
+    "type": "Nature",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ghandruk",
+    "name": "Gurung Museum",
+    "type": "Museum",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ghandruk",
+    "name": "Annapurna South views",
+    "type": "Viewpoint",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ghandruk",
+    "name": "Stone-paved village trail",
+    "type": "Trail / trek",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "ghandruk",
+    "name": "Poon Hill route access",
+    "type": "Trail / trek",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "everest-region",
+    "name": "Everest Base Camp trek",
+    "type": "Trail / trek",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "everest-region",
+    "name": "Namche Bazaar",
+    "type": "Cultural",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "everest-region",
+    "name": "Tengboche Monastery",
+    "type": "Religious site",
+    "description": "",
+    "entryFee": null
+  },
+  {
+    "destination": "everest-region",
+    "name": "Sagarmatha National Park",
+    "type": "Nature",
+    "description": "",
+    "entryFee": null
+  }
+]

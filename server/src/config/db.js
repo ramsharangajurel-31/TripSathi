@@ -39,15 +39,15 @@ function attachListeners() {
  * switches autoIndex off, and indexes are created by ensureIndexes() (see
  * models/index.js) or by `npm run db:indexes`.
  */
-export async function connectDatabase() {
+export async function connectDatabase(uri = env.mongoUri) {
   if (mongoose.connection.readyState === 1) return mongoose.connection;
 
   attachListeners();
 
-  const target = inspectMongoUri(env.mongoUri);
+    const target = inspectMongoUri(uri);
   logger.info({ host: target.host, database: target.database }, "Connecting to MongoDB");
 
-  await mongoose.connect(env.mongoUri, {
+    await mongoose.connect(uri, {
     serverSelectionTimeoutMS: CONNECT_TIMEOUT_MS,
     maxPoolSize: 10,
     

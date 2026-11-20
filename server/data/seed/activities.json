@@ -1,0 +1,402 @@
+[
+  {
+    "destination": "kathmandu",
+    "name": "Boudhanath Stupa walk",
+    "description": "Walk the kora around one of the largest stupas in the world and enjoy a rooftop view.",
+    "category": "religious",
+    "durationHours": 2,
+    "costPerPerson": 400,
+    "intensity": "easy",
+    "bestTime": "evening"
+  },
+  {
+    "destination": "kathmandu",
+    "name": "Pashupatinath Temple visit",
+    "description": "Explore the riverside temple complex, an important Hindu pilgrimage site.",
+    "category": "religious",
+    "durationHours": 2.5,
+    "costPerPerson": 500,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "kathmandu",
+    "name": "Kathmandu Durbar Square",
+    "description": "Old royal palaces, courtyards and temples in the historic heart of the city.",
+    "category": "historical",
+    "durationHours": 2.5,
+    "costPerPerson": 500,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "kathmandu",
+    "name": "Swayambhunath Stupa",
+    "description": "Climb the steps to a hilltop stupa with wide views over the valley.",
+    "category": "religious",
+    "durationHours": 2,
+    "costPerPerson": 200,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "kathmandu",
+    "name": "Newari food trail",
+    "description": "Taste traditional Newari dishes at local eateries around the old town.",
+    "category": "food",
+    "durationHours": 2,
+    "costPerPerson": 1200,
+    "intensity": "easy",
+    "bestTime": "evening"
+  },
+  {
+    "destination": "pokhara",
+    "name": "Phewa Lake boating",
+    "description": "Row across the lake toward the island temple with the mountains behind you.",
+    "category": "nature",
+    "durationHours": 2,
+    "costPerPerson": 800,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "pokhara",
+    "name": "Sarangkot sunrise",
+    "description": "Early-morning viewpoint for the Annapurna range at sunrise. Includes a shared ride.",
+    "category": "photography",
+    "durationHours": 4,
+    "costPerPerson": 700,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "pokhara",
+    "name": "World Peace Pagoda hike",
+    "description": "Cross the lake and hike up to the white pagoda for lake and mountain views.",
+    "category": "nature",
+    "durationHours": 3,
+    "costPerPerson": 300,
+    "intensity": "moderate",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "pokhara",
+    "name": "Davis Falls and Gupteshwor Cave",
+    "description": "Visit a waterfall that drops into a gorge and a nearby cave temple.",
+    "category": "nature",
+    "durationHours": 2,
+    "costPerPerson": 300,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "pokhara",
+    "name": "Tandem paragliding",
+    "description": "Fly over the valley with a licensed pilot. Weather dependent.",
+    "category": "adventure",
+    "durationHours": 3,
+    "costPerPerson": 9000,
+    "intensity": "challenging",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "pokhara",
+    "name": "Lakeside evening walk",
+    "description": "A relaxed walk along the lake promenade, with dinner at a local restaurant.",
+    "category": "relaxation",
+    "durationHours": 2,
+    "costPerPerson": 0,
+    "intensity": "easy",
+    "bestTime": "evening"
+  },
+  {
+    "destination": "chitwan",
+    "name": "Jeep safari in Chitwan National Park",
+    "description": "Half-day jeep safari with a guide, looking for rhinos, deer and birds.",
+    "category": "wildlife",
+    "durationHours": 4,
+    "costPerPerson": 3500,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "chitwan",
+    "name": "Rapti River canoe ride",
+    "description": "Glide down the river in a dugout canoe to spot crocodiles and waterbirds.",
+    "category": "wildlife",
+    "durationHours": 1.5,
+    "costPerPerson": 1000,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "chitwan",
+    "name": "Elephant Breeding Centre visit",
+    "description": "A guided visit to learn about elephant conservation in the park.",
+    "category": "wildlife",
+    "durationHours": 2,
+    "costPerPerson": 300,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "chitwan",
+    "name": "Tharu cultural show",
+    "description": "Traditional Tharu music and stick dance performed in the evening.",
+    "category": "culture",
+    "durationHours": 1.5,
+    "costPerPerson": 500,
+    "intensity": "easy",
+    "bestTime": "evening"
+  },
+  {
+    "destination": "chitwan",
+    "name": "Village nature walk",
+    "description": "A guided walk through Tharu villages and community forest edges.",
+    "category": "nature",
+    "durationHours": 2,
+    "costPerPerson": 500,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "nagarkot",
+    "name": "Nagarkot sunrise viewpoint",
+    "description": "Watch the sun rise over the Himalayan range from the hilltop tower.",
+    "category": "photography",
+    "durationHours": 2,
+    "costPerPerson": 200,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "nagarkot",
+    "name": "Nagarkot to Changu Narayan hike",
+    "description": "A half-day downhill hike through villages to an ancient temple.",
+    "category": "trekking",
+    "durationHours": 4,
+    "costPerPerson": 400,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "nagarkot",
+    "name": "Sunset and Himalayan panorama",
+    "description": "Relax at a viewpoint as the light changes over the mountains.",
+    "category": "relaxation",
+    "durationHours": 1.5,
+    "costPerPerson": 0,
+    "intensity": "easy",
+    "bestTime": "evening"
+  },
+  {
+    "destination": "bandipur",
+    "name": "Bandipur Bazaar walk",
+    "description": "Stroll the car-free Newari bazaar with its restored shopfronts.",
+    "category": "culture",
+    "durationHours": 2,
+    "costPerPerson": 0,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "bandipur",
+    "name": "Siddha Cave excursion",
+    "description": "Hike to one of the largest caves in Nepal with a local guide.",
+    "category": "adventure",
+    "durationHours": 4,
+    "costPerPerson": 600,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "bandipur",
+    "name": "Tundikhel sunset",
+    "description": "Sunset over the Marsyangdi valley from the town's open viewing ground.",
+    "category": "relaxation",
+    "durationHours": 1.5,
+    "costPerPerson": 0,
+    "intensity": "easy",
+    "bestTime": "evening"
+  },
+  {
+    "destination": "lumbini",
+    "name": "Sacred Garden and Maya Devi Temple",
+    "description": "Visit the birthplace of Lord Buddha, the Ashoka Pillar and the holy pond.",
+    "category": "religious",
+    "durationHours": 3,
+    "costPerPerson": 400,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "lumbini",
+    "name": "Monastic Zone by rickshaw",
+    "description": "Tour monasteries built by Buddhist communities from many countries.",
+    "category": "culture",
+    "durationHours": 3,
+    "costPerPerson": 600,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "lumbini",
+    "name": "Lumbini Museum",
+    "description": "A small museum of Buddhist art and artefacts from the region.",
+    "category": "historical",
+    "durationHours": 1.5,
+    "costPerPerson": 150,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "mustang",
+    "name": "Kali Gandaki gorge viewpoints",
+    "description": "Walk the wide riverbed and viewpoints around Jomsom, with the Nilgiri and Dhaulagiri peaks above.",
+    "category": "photography",
+    "durationHours": 3,
+    "costPerPerson": 400,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "mustang",
+    "name": "Muktinath Temple visit",
+    "description": "A sacred site for Hindus and Buddhists, reached by shared jeep from Jomsom.",
+    "category": "religious",
+    "durationHours": 4,
+    "costPerPerson": 1500,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "mustang",
+    "name": "Kagbeni village exploration",
+    "description": "Wander the narrow lanes of a Tibetan-style village at the gateway to Upper Mustang.",
+    "category": "culture",
+    "durationHours": 3,
+    "costPerPerson": 600,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "mustang",
+    "name": "Muktinath to Jharkot village walk",
+    "description": "A downhill walk between two hill villages with views of the dry valley.",
+    "category": "trekking",
+    "durationHours": 4,
+    "costPerPerson": 700,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "ilam",
+    "name": "Tea garden walk",
+    "description": "Walk through the green tea estates around Ilam and Kanyam with a local guide.",
+    "category": "nature",
+    "durationHours": 2.5,
+    "costPerPerson": 500,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "ilam",
+    "name": "Antu Danda sunrise",
+    "description": "An early shared-jeep ride to a hilltop viewpoint for sunrise over the eastern hills.",
+    "category": "photography",
+    "durationHours": 3,
+    "costPerPerson": 1200,
+    "intensity": "easy",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "ilam",
+    "name": "Mai Pokhari lake visit",
+    "description": "A quiet lake and wetland area with a short loop trail and picnic spots.",
+    "category": "relaxation",
+    "durationHours": 3,
+    "costPerPerson": 800,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "ilam",
+    "name": "Local tea and food tasting",
+    "description": "Sample Ilam tea and regional foods at a local tea house.",
+    "category": "food",
+    "durationHours": 1.5,
+    "costPerPerson": 600,
+    "intensity": "easy",
+    "bestTime": "evening"
+  },
+  {
+    "destination": "ghandruk",
+    "name": "Gurung Museum visit",
+    "description": "A small museum on Gurung history, clothing, tools and way of life.",
+    "category": "culture",
+    "durationHours": 1.5,
+    "costPerPerson": 100,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "ghandruk",
+    "name": "Stone-paved village trail walk",
+    "description": "Walk the terraced village trails with views of Annapurna South and Machhapuchhre.",
+    "category": "trekking",
+    "durationHours": 3,
+    "costPerPerson": 300,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "ghandruk",
+    "name": "Annapurna sunrise viewpoint",
+    "description": "A short early-morning climb above the village for sunrise on the Annapurna range.",
+    "category": "photography",
+    "durationHours": 2,
+    "costPerPerson": 200,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "everest-region",
+    "name": "Namche Bazaar acclimatisation walk",
+    "description": "A rest-day hike around the Sherpa trading town to help the body adjust to altitude.",
+    "category": "trekking",
+    "durationHours": 3,
+    "costPerPerson": 500,
+    "intensity": "moderate",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "everest-region",
+    "name": "Tengboche Monastery visit",
+    "description": "Visit the largest monastery in the Khumbu region, set among high peaks.",
+    "category": "culture",
+    "durationHours": 4,
+    "costPerPerson": 600,
+    "intensity": "moderate",
+    "bestTime": "afternoon"
+  },
+  {
+    "destination": "everest-region",
+    "name": "Trek stage toward Everest Base Camp",
+    "description": "A full trekking day on the Base Camp trail with a guide. Cost is a share of guide and porter fees.",
+    "category": "trekking",
+    "durationHours": 7,
+    "costPerPerson": 3000,
+    "intensity": "challenging",
+    "bestTime": "morning"
+  },
+  {
+    "destination": "everest-region",
+    "name": "Sagarmatha National Park nature walk",
+    "description": "An easy guided walk to look for Himalayan birds and other wildlife along the valley.",
+    "category": "nature",
+    "durationHours": 3,
+    "costPerPerson": 400,
+    "intensity": "easy",
+    "bestTime": "afternoon"
+  }
+]

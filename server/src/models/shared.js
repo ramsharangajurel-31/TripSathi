@@ -25,7 +25,8 @@ export function schemaOptions() {
       transform(doc, ret) {
         delete ret._id;
         delete ret.passwordHash;
-        delete ret.nameKey;
+       delete ret.nameKey;
+        delete ret.tokenVersion;
         return ret;
       },
     },

@@ -79,7 +79,10 @@ const userSchema = new Schema(
     },
     travelPreferences: { type: travelPreferencesSchema, default: undefined },
     lastLoginAt: { type: Date },
-    passwordChangedAt: { type: Date },
+     passwordChangedAt: { type: Date },
+    // Raising this number ends every access token issued before it (used on
+    // password change). Never sent to clients.
+    tokenVersion: { type: Number, default: 0, min: 0 },
   },
   schemaOptions()
 );
